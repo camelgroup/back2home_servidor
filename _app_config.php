@@ -73,6 +73,7 @@ GlobalConfig::$ROUTE_MAP = array(
 
     //Web Service Personalizado
     'POST:web_service/usuario/nuevo' => array('route' => 'Usuario.Guardar'),
+    'GET:usuarios/enviar' => array('route' => 'Usuario.EnviarCorreo'),
 
 	// default controller when no route specified
 	'GET:' => array('route' => 'Default.Home'),

@@ -304,6 +304,17 @@ class UsuarioController extends AppBaseController
 			$this->RenderExceptionJSON($ex);
 		}
 	}
+
+    public function EnviarCorreo(){
+        //Importing firebase libraries
+        require_once 'resources/phpmailer/correo.php';
+        $correo = new Correo();
+        $correo->setSubject("ESTO ES UNA PRUEBA BITCH");
+        $correo->setBody('xddddddddd lmao xd xdeededededeededede');
+        $correo->setAddress('luiyicpu@hotmail.com');
+        $correo->sendEmail();
+        echo 'enviado?';
+    }
 }
 
 ?>
