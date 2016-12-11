@@ -16,17 +16,17 @@ require_once("verysimple/HTTP/RequestUtil.php");
 
 /** database connection settings */
 GlobalConfig::$CONNECTION_SETTING = new ConnectionSetting();
-GlobalConfig::$CONNECTION_SETTING->ConnectionString = "localhost:3306";
-GlobalConfig::$CONNECTION_SETTING->DBName = "back2home_servidor";
-GlobalConfig::$CONNECTION_SETTING->Username = "root";
-GlobalConfig::$CONNECTION_SETTING->Password = "";
+GlobalConfig::$CONNECTION_SETTING->ConnectionString = "127.8.190.2:3306";
+GlobalConfig::$CONNECTION_SETTING->DBName = "back2home";
+GlobalConfig::$CONNECTION_SETTING->Username = "admin7wDqLQe ";
+GlobalConfig::$CONNECTION_SETTING->Password = "vbhZrLhI21Ci";
 GlobalConfig::$CONNECTION_SETTING->Type = "MySQL";
 GlobalConfig::$CONNECTION_SETTING->Charset = "utf8";
 GlobalConfig::$CONNECTION_SETTING->Multibyte = true;
 // GlobalConfig::$CONNECTION_SETTING->BootstrapSQL = "SET SQL_BIG_SELECTS=1";
 
 /** the root url of the application with trailing slash, for example http://localhost/petfinder/ */
-GlobalConfig::$ROOT_URL = RequestUtil::GetServerRootUrl() . 'back2home_servidor/';
+GlobalConfig::$ROOT_URL = RequestUtil::GetServerRootUrl() . '';
 
 /** timezone */
 // date_default_timezone_set("UTC");
