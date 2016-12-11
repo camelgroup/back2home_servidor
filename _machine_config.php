@@ -18,7 +18,7 @@ require_once("verysimple/HTTP/RequestUtil.php");
 GlobalConfig::$CONNECTION_SETTING = new ConnectionSetting();
 GlobalConfig::$CONNECTION_SETTING->ConnectionString = "127.8.190.2:3306";
 GlobalConfig::$CONNECTION_SETTING->DBName = "back2home_servidor";
-GlobalConfig::$CONNECTION_SETTING->Username = "admin7wDqLQe ";
+GlobalConfig::$CONNECTION_SETTING->Username = "admin7wDqLQe";
 GlobalConfig::$CONNECTION_SETTING->Password = "vbhZrLhI21Ci";
 GlobalConfig::$CONNECTION_SETTING->Type = "MySQL";
 GlobalConfig::$CONNECTION_SETTING->Charset = "utf8";
