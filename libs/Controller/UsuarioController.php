@@ -48,6 +48,10 @@ class UsuarioController extends AppBaseController
         $this->Render('UsuarioLogin');
     }
 
+    public function Recuperar(){
+        $this->Render('UsuarioRecuperar');
+    }
+
 
     public function Guardar(){
         //Insertar poster
@@ -314,7 +318,7 @@ class UsuarioController extends AppBaseController
 	}
 
     public function EnviarCorreo(){
-        //Importing firebase libraries
+        //Importing phpmailer
         require_once 'resources/phpmailer/correo.php';
         $correo = new Correo();
         $correo->setSubject("ESTO ES UNA PRUEBA BITCH");
@@ -395,6 +399,30 @@ class UsuarioController extends AppBaseController
             {
                 echo 0;
             }
+        }
+    }
+
+    public function RecuperarPassword(){
+        $usuario = new Usuario($this->Phreezer);
+        $usuario->Email = $_POST['email'];
+        require_once 'Model/UsuarioCriteria.php';
+        $criteria = new UsuarioCriteria();
+        $criteria->Email_Equals = $usuario->Email;
+        $usuario->Validate();
+        $errors = $usuario->GetValidationErrors();
+        $resultado = $this->Phreezer->Query('Usuario',$criteria)->ToObjectArray(true, $this->SimpleObjectParams());
+        if (count($resultado) == 1){
+            //El correo existe
+            require_once 'resources/phpmailer/correo.php';
+            $correo = new Correo();
+            $correo->setSubject("Recuperar Password");
+            $correo->setBody('Su password es: '. $resultado[0]->password);
+            $correo->setAddress($resultado[0]->email);
+            $correo->sendEmail();
+            echo 1;
+        }else{
+            //El usuario no existe
+            echo 0;
         }
     }
 }

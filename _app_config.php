@@ -79,6 +79,8 @@ GlobalConfig::$ROUTE_MAP = array(
     'POST:usuario/registrar' => array('route' => 'Usuario.Registrar'),
     'GET:usuario/login' => array('route' => 'Usuario.Login'),
     'POST:usuario/autenticar' => array('route' => 'Usuario.Autenticar'),
+    'GET:usuario/recuperar' => array('route' => 'Usuario.Recuperar'),
+    'POST:usuario/recuperar' => array('route' => 'Usuario.RecuperarPassword'),
 
 	// default controller when no route specified
 	'GET:' => array('route' => 'Default.Home'),
