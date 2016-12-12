@@ -338,7 +338,7 @@ class UsuarioController extends AppBaseController
         require_once 'Model/UsuarioCriteria.php';
         //Verificar que el codigo facebook sea unico
         $criteria = new UsuarioCriteria();
-        $criteria->IdFacebook_Equals = $usuario->IdFacebook;
+        $criteria->Email_Equals = $usuario->Email;
         $resultado = $this->Phreezer->Query('Usuario',$criteria)->ToObjectArray(true, $this->SimpleObjectParams());
         if (count($resultado) == 1){
             //El usuario ya existe
