@@ -26,8 +26,9 @@ class UsuarioReporter extends Reporter
 	public $Nombre;
 	public $IdFirebase;
 	public $Email;
-	public $Nrotelefono;
+	public $Password;
 	public $IdFacebook;
+	public $IdGoogle;
 
 	/*
 	* GetCustomQuery returns a fully formed SQL statement.  The result columns
@@ -45,8 +46,9 @@ class UsuarioReporter extends Reporter
 			,`usuario`.`nombre` as Nombre
 			,`usuario`.`id_firebase` as IdFirebase
 			,`usuario`.`email` as Email
-			,`usuario`.`nroTelefono` as Nrotelefono
+			,`usuario`.`password` as Password
 			,`usuario`.`id_facebook` as IdFacebook
+			,`usuario`.`id_google` as IdGoogle
 		from `usuario`";
 
 		// the criteria can be used or you can write your own custom logic.

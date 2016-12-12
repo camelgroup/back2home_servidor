@@ -10,7 +10,7 @@ $this->display('_Header.tpl.php');
 </div>
 
 
-<form action="usuario/registrar" method="post" enctype="multipart/form-data">
+<form action="usuario/autenticar" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-xs-6">
             <div class="form-group">
@@ -20,22 +20,8 @@ $this->display('_Header.tpl.php');
         </div>
         <div class="col-xs-6">
             <div class="form-group">
-                <label>Email</label>
-                <input class="form-control" type="text" name="email">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="form-group">
                 <label>Password</label>
                 <input class="form-control" type="text" name="password">
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="form-group">
-                <label>ID firebase</label>
-                <input class="form-control" type="text" name="id_firebase">
             </div>
         </div>
     </div>

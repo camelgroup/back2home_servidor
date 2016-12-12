@@ -25,7 +25,7 @@ GlobalConfig::$CONNECTION_SETTING->Charset = "utf8";
 GlobalConfig::$CONNECTION_SETTING->Multibyte = true;
 // GlobalConfig::$CONNECTION_SETTING->BootstrapSQL = "SET SQL_BIG_SELECTS=1";
 
-/** the root url of the application with trailing slash, for example http://localhost/petfinder/ */
+/** the root url of the application with trailing slash, for example http://localhost/back2home_servidor/ */
 GlobalConfig::$ROOT_URL = RequestUtil::GetServerRootUrl() . '';
 
 /** timezone */

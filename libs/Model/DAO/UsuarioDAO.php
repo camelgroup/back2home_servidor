@@ -21,23 +21,26 @@ require_once("UsuarioMap.php");
  */
 class UsuarioDAO extends Phreezable
 {
-	/** @var int */
-	public $Pkusuario;
+    /** @var int */
+    public $Pkusuario;
 
-	/** @var string */
-	public $Nombre;
+    /** @var string */
+    public $Nombre;
 
-	/** @var string */
-	public $IdFirebase;
+    /** @var string */
+    public $IdFirebase;
 
-	/** @var string */
-	public $Email;
+    /** @var string */
+    public $Email;
 
-	/** @var string */
-	public $Nrotelefono;
+    /** @var string */
+    public $Password;
 
-	/** @var string */
-	public $IdFacebook;
+    /** @var string */
+    public $IdFacebook;
+
+    /** @var string */
+    public $IdGoogle;
 
 
 

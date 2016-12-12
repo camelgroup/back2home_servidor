@@ -46,8 +46,9 @@ $this->display('_Header.tpl.php');
                     <th id="header_Nombre">Nombre<% if (page.orderBy == 'Nombre') { %> <i class='fa fa-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
                     <th id="header_IdFirebase">ID Firebase<% if (page.orderBy == 'IdFirebase') { %> <i class='fa fa-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
                     <th id="header_Email">Email<% if (page.orderBy == 'Email') { %> <i class='fa fa-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
-                    <th id="header_Nrotelefono">Nrotelefono<% if (page.orderBy == 'Nrotelefono') { %> <i class='fa fa-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
+                    <th id="header_Password">Password<% if (page.orderBy == 'Password') { %> <i class='fa fa-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
 				    <th id="header_IdFacebook">ID Facebook<% if (page.orderBy == 'IdFacebook') { %> <i class='fa fa-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
+				    <th id="header_IdGoogle">ID Google<% if (page.orderBy == 'IdGoogle') { %> <i class='fa fa-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,8 +58,9 @@ $this->display('_Header.tpl.php');
                         <td><%= _.escape(item.get('nombre') || '') %></td>
                         <td><%= _.escape(item.get('idFirebase') || '') %></td>
                         <td><%= _.escape(item.get('email') || '') %></td>
-                        <td><%= _.escape(item.get('nrotelefono') || '') %></td>
+                        <td><%= _.escape(item.get('password') || '') %></td>
 				        <td><%= _.escape(item.get('idFacebook') || '') %></td>
+				        <td><%= _.escape(item.get('idGoogle') || '') %></td>
                     </tr>
                 <% }); %>
                 </tbody>
@@ -97,8 +99,8 @@ $this->display('_Header.tpl.php');
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label>Numero telefono</label>
-                            <input type="text" class="form-control" id="nrotelefono" placeholder="Numero telefono" value="<%= _.escape(item.get('nrotelefono') || '') %>">
+                            <label>Password</label>
+                            <input type="text" class="form-control" id="password" placeholder="Password" value="<%= _.escape(item.get('password') || '') %>">
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -108,6 +110,13 @@ $this->display('_Header.tpl.php');
                         <div class="form-group">
                             <label>ID Facebook</label>
                             <input type="text" class="form-control" id="idFacebook" placeholder="ID Facebook" value="<%= _.escape(item.get('idFacebook') || '') %>">
+                            <span class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>ID Google</label>
+                            <input type="text" class="form-control" id="idGoogle" placeholder="ID Google" value="<%= _.escape(item.get('idGoogle') || '') %>">
                             <span class="help-inline"></span>
                         </div>
                     </div>

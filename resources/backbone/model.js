@@ -132,322 +132,35 @@ model.AbstractCollection = Backbone.Collection.extend({
 	}
 });
 
-/**
- * Imagen Backbone Model
- */
-model.ImagenModel = Backbone.Model.extend({
-	urlRoot: 'api/imagen',
-	idAttribute: 'pkimagen',
-	pkimagen: '',
-	ruta: '',
-	fkposter: '',
-	defaults: {
-		'pkimagen': null,
-		'ruta': '',
-		'fkposter': ''
-	}
-});
-
-/**
- * Imagen Backbone Collection
- */
-model.ImagenCollection = model.AbstractCollection.extend({
-	url: 'api/imagenes',
-	model: model.ImagenModel
-});
-
-/**
- * Mascota Backbone Model
- */
-model.MascotaModel = Backbone.Model.extend({
-	urlRoot: 'api/mascota',
-	idAttribute: 'pkmascota',
-	pkmascota: '',
-	nombre: '',
-	genero: '',
-	tamano: '',
-	color: '',
-	fktipoMascota: '',
-	fkraza: '',
-	estado: '',
-	defaults: {
-		'pkmascota': null,
-		'nombre': '',
-		'genero': '',
-		'tamano': '',
-		'color': '',
-		'fktipoMascota': '',
-		'fkraza': '',
-		'estado': ''
-	}
-});
-
-/**
- * Mascota Backbone Collection
- */
-model.MascotaCollection = model.AbstractCollection.extend({
-	url: 'api/mascotas',
-	model: model.MascotaModel
-});
-
-/**
- * Notificacion Backbone Model
- */
-model.NotificacionModel = Backbone.Model.extend({
-	urlRoot: 'api/notificacion',
-	idAttribute: 'pknotificacion',
-	pknotificacion: '',
-	fecha: '',
-	hora: '',
-	fkusuarioDestino: '',
-	fkposter: '',
-	visto: '',
-	defaults: {
-		'pknotificacion': null,
-		'fecha': '',
-		'hora': '',
-		'fkusuarioDestino': '',
-		'fkposter': '',
-		'visto': ''
-	}
-});
-
-/**
- * Notificacion Backbone Collection
- */
-model.NotificacionCollection = model.AbstractCollection.extend({
-	url: 'api/notificaciones',
-	model: model.NotificacionModel
-});
-
-/**
- * Poster Backbone Model
- */
-model.PosterModel = Backbone.Model.extend({
-	urlRoot: 'api/poster',
-	idAttribute: 'pkposter',
-	pkposter: '',
-	fkusuario: '',
-	fkmascota: '',
-	fktipoPoster: '',
-    telefono: '',
-	latitud: '',
-	longitud: '',
-	recompensa: '',
-	tipoMoneda: '',
-	descripcion: '',
-	fecha: '',
-	hora: '',
-	imagen: '',
-    mascota_nombre : '',
-    mascota_genero : '',
-    mascota_tamano : '',
-    mascota_color : '',
-    mascota_estado : '',
-    tipoMascota_nombre : '',
-    raza_nombre : '',
-    usuario_nombre : '',
-    usuario_id_facebook : '',
-    usuario_id_firebase : '',
-    usuario_nroTelefono : '',
-    defaults: {
-		'pkposter': null,
-		'fkusuario': '',
-		'fkmascota': '',
-		'fktipoPoster': '',
-		'telefono': '',
-		'latitud': '',
-		'longitud': '',
-		'recompensa': '',
-		'tipoMoneda': '',
-		'descripcion': '',
-		'fecha': '',
-		'hora': '',
-		'imagen': '',
-        'mascota_nombre' : '',
-        'mascota_genero' : '',
-        'mascota_tamano' : '',
-        'mascota_color' : '',
-        'mascota_estado' : '',
-        'tipoMascota_nombre' : '',
-        'raza_nombre' : '',
-        'usuario_nombre' : '',
-        'usuario_id_facebook' : '',
-        'usuario_id_firebase' : '',
-        'usuario_nroTelefono' : ''
-	}
-});
-
-/**
- * Poster Backbone Collection
- */
-model.PosterCollection = model.AbstractCollection.extend({
-	url: 'api/posters',
-	model: model.PosterModel
-});
-
-/**
- * Raza Backbone Model
- */
-model.RazaModel = Backbone.Model.extend({
-	urlRoot: 'api/raza',
-	idAttribute: 'pkraza',
-	pkraza: '',
-	nombre: '',
-	fktipoMascota: '',
-	defaults: {
-		'pkraza': null,
-		'nombre': '',
-		'fktipoMascota': ''
-	}
-});
-
-/**
- * Raza Backbone Collection
- */
-model.RazaCollection = model.AbstractCollection.extend({
-	url: 'api/razas',
-	model: model.RazaModel
-});
-
-/**
- * TipoMascota Backbone Model
- */
-model.TipoMascotaModel = Backbone.Model.extend({
-	urlRoot: 'api/tipomascota',
-	idAttribute: 'pktipoMascota',
-	pktipoMascota: '',
-	nombre: '',
-	defaults: {
-		'pktipoMascota': null,
-		'nombre': ''
-	}
-});
-
-/**
- * TipoMascota Backbone Collection
- */
-model.TipoMascotaCollection = model.AbstractCollection.extend({
-	url: 'api/tipomascotas',
-	model: model.TipoMascotaModel
-});
-
-/**
- * TipoPoster Backbone Model
- */
-model.TipoPosterModel = Backbone.Model.extend({
-	urlRoot: 'api/tipoposter',
-	idAttribute: 'pktipoPoster',
-	pktipoPoster: '',
-	nombre: '',
-	descripcion: '',
-	precio: '',
-	tipoMoneda: '',
-	defaults: {
-		'pktipoPoster': null,
-		'nombre': '',
-		'descripcion': '',
-		'precio': '',
-		'tipoMoneda': ''
-	}
-});
-
-/**
- * TipoPoster Backbone Collection
- */
-model.TipoPosterCollection = model.AbstractCollection.extend({
-	url: 'api/tipoposters',
-	model: model.TipoPosterModel
-});
 
 /**
  * Usuario Backbone Model
  */
 model.UsuarioModel = Backbone.Model.extend({
-	urlRoot: 'api/usuario',
-	idAttribute: 'pkusuario',
-	pkusuario: '',
-	nombre: '',
-	ifFirebase: '',
-	email: '',
-	nrotelefono: '',
-	idFacebook: '',
-	defaults: {
-		'pkusuario': null,
-		'nombre': '',
-		'idFirebase': '',
-		'email': '',
-		'nrotelefono': '',
-		'idFacebook': ''
-	}
+    urlRoot: 'api/usuario',
+    idAttribute: 'pkusuario',
+    pkusuario: '',
+    nombre: '',
+    idFirebase: '',
+    email: '',
+    password: '',
+    idFacebook: '',
+    idGoogle: '',
+    defaults: {
+        'pkusuario': null,
+        'nombre': '',
+        'idFirebase': '',
+        'email': '',
+        'password': '',
+        'idFacebook': '',
+        'idGoogle': ''
+    }
 });
 
 /**
  * Usuario Backbone Collection
  */
 model.UsuarioCollection = model.AbstractCollection.extend({
-	url: 'api/usuarios',
-	model: model.UsuarioModel
-});
-
-/**
- * Afiliado Backbone Model
- */
-model.AfiliadoModel = Backbone.Model.extend({
-    urlRoot: 'api/afiliado',
-    idAttribute: 'pkafiliado',
-    pkafiliado: '',
-    nombre: '',
-    direccion: '',
-    latitud: '',
-    longitud: '',
-    telefono: '',
-    descripcion: '',
-    fkusuario: '',
-    plan: '',
-    urlimagen: '',
-    defaults: {
-        'pkafiliado': null,
-        'nombre': '',
-        'direccion': '',
-        'latitud': '',
-        'longitud': '',
-        'telefono': '',
-        'descripcion': '',
-        'fkusuario': '',
-        'plan': '',
-        'urlimagen': ''
-    }
-});
-
-/**
- * Afiliado Backbone Collection
- */
-model.AfiliadoCollection = model.AbstractCollection.extend({
-    url: 'api/afiliados',
-    model: model.AfiliadoModel
-});
-
-/**
- * ImagenAfiliado Backbone Model
- */
-model.ImagenAfiliadoModel = Backbone.Model.extend({
-	urlRoot: 'api/imagenafiliado',
-	idAttribute: 'pkimagen',
-	pkimagen: '',
-	ruta: '',
-	fkafiliado: '',
-	defaults: {
-		'pkimagen': null,
-		'ruta': '',
-		'fkafiliado': ''
-	}
-});
-
-/**
- * ImagenAfiliado Backbone Collection
- */
-model.ImagenAfiliadoCollection = model.AbstractCollection.extend({
-	url: 'api/imagenafiliados',
-	model: model.ImagenAfiliadoModel
+    url: 'api/usuarios',
+    model: model.UsuarioModel
 });

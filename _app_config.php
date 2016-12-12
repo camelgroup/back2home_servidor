@@ -74,6 +74,11 @@ GlobalConfig::$ROUTE_MAP = array(
     //Web Service Personalizado
     'POST:web_service/usuario/nuevo' => array('route' => 'Usuario.Guardar'),
     'GET:usuarios/enviar' => array('route' => 'Usuario.EnviarCorreo'),
+    'GET:usuario/autenticar' => array('route' => 'Usuario.Autenticar'),
+    'GET:usuario/nuevo' => array('route' => 'Usuario.Nuevo'),
+    'POST:usuario/registrar' => array('route' => 'Usuario.Registrar'),
+    'GET:usuario/login' => array('route' => 'Usuario.Login'),
+    'POST:usuario/autenticar' => array('route' => 'Usuario.Autenticar'),
 
 	// default controller when no route specified
 	'GET:' => array('route' => 'Default.Home'),
@@ -88,7 +93,6 @@ GlobalConfig::$ROUTE_MAP = array(
 	// Usuario
 	'GET:usuarios' => array('route' => 'Usuario.ListView'),
 	'GET:usuario/(:num)' => array('route' => 'Usuario.SingleView', 'params' => array('pkusuario' => 1)),
-    'GET:usuario/nuevo' => array('route' => 'Usuario.Nuevo'),
 	'GET:api/usuarios' => array('route' => 'Usuario.Query'),
 	'POST:api/usuario' => array('route' => 'Usuario.Create'),
 	'GET:api/usuario/(:num)' => array('route' => 'Usuario.Read', 'params' => array('pkusuario' => 2)),

@@ -64,7 +64,7 @@ var page = {
 			page.fetchParams.page = 1;
 			page.fetchUsuarios(page.fetchParams);
 		});
-		
+
 		// make the rows clickable ('rendered' is a custom event, not a standard backbone event)
 		this.collectionView.on('rendered',function(){
 
@@ -93,7 +93,7 @@ var page = {
 				page.fetchParams.page = this.id.substr(5);
 				page.fetchUsuarios(page.fetchParams);
 			});
-			
+
 			page.isInitialized = true;
 			page.isInitializing = false;
 		});
@@ -220,7 +220,7 @@ var page = {
 			// this happens if the datepicker input.value isn't a valid date
 			if (console) console.log('datepicker error: '+error.message);
 		}
-		
+
 		$('.timepicker-default').timepicker({ defaultTime: 'value' });
 
 
@@ -262,13 +262,14 @@ var page = {
 
 		app.showProgress('modelLoader');
 
-		page.usuario.save({
 
-			'nombre': $('input#nombre').val(),
-			'idFirebase': $('input#idFirebase').val(),
-			'email': $('input#email').val(),
-			'nrotelefono': $('input#nrotelefono').val(),
-			'idFacebook': $('input#idFacebook').val()
+		page.usuario.save({
+            'nombre': $('input#nombre').val(),
+            'idFirebase': $('input#idFirebase').val(),
+            'email': $('input#email').val(),
+            'password': $('input#password').val(),
+            'idFacebook': $('input#idFacebook').val(),
+            'idGoogle': $('input#idGoogle').val()
 		}, {
 			wait: true,
 			success: function(){

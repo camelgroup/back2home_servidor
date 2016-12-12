@@ -44,6 +44,11 @@ class UsuarioController extends AppBaseController
         $this->Render('UsuarioNuevo');
     }
 
+    public function Login(){
+        $this->Render('UsuarioLogin');
+    }
+
+
     public function Guardar(){
         //Insertar poster
         $usuario = new Usuario($this->Phreezer);
@@ -89,7 +94,7 @@ class UsuarioController extends AppBaseController
 			// TODO: this will limit results based on all properties included in the filter list 
 			$filter = RequestUtil::Get('filter');
 			if ($filter) $criteria->AddFilter(
-				new CriteriaFilter('Pkusuario,Nombre,IdFirebase,Email,Nrotelefono,IdFacebook'
+				new CriteriaFilter('Pkusuario,Nombre,IdFirebase,Email,Password,IdFacebook,IdGoogle'
 				, '%'.$filter.'%')
 			);
 
@@ -190,11 +195,13 @@ class UsuarioController extends AppBaseController
 			// this is an auto-increment.  uncomment if updating is allowed
 			// $usuario->Pkusuario = $this->SafeGetVal($json, 'pkusuario');
 
-			$usuario->Nombre = $this->SafeGetVal($json, 'nombre');
-			$usuario->IdFirebase = $this->SafeGetVal($json, 'idFirebase');
-			$usuario->Email = $this->SafeGetVal($json, 'email');
-			$usuario->Nrotelefono = $this->SafeGetVal($json, 'nrotelefono');
-			$usuario->IdFacebook = $this->SafeGetVal($json, 'idFacebook');
+            $usuario->Nombre = $this->SafeGetVal($json, 'nombre');
+            $usuario->IdFirebase = $this->SafeGetVal($json, 'idFirebase');
+            $usuario->Email = $this->SafeGetVal($json, 'email');
+            $usuario->Password = $this->SafeGetVal($json, 'password');
+            $usuario->IdFacebook = $this->SafeGetVal($json, 'idFacebook');
+            $usuario->IdGoogle = $this->SafeGetVal($json, 'idGoogle');
+
 			$usuario->Validate();
 			$errors = $usuario->GetValidationErrors();
 
@@ -207,7 +214,7 @@ class UsuarioController extends AppBaseController
 			
 			if (count($resultado) == 1){
 				//El usuario ya existe
-				$this->RenderErrorJSON('El ID de facebook '.json_encode(array($resultado[0]->idFacebook,$resultado[0]->idFirebase)).' ya existe',$errors);
+				$this->RenderErrorJSON(json_encode($usuario). ' El ID de facebook '.json_encode(array($resultado[0]->idFacebook,$resultado[0]->idFirebase)).' ya existe',$errors);
 			}else{
 				//Registrar nuevo
 				if (count($errors) > 0)
@@ -253,7 +260,8 @@ class UsuarioController extends AppBaseController
 			$usuario->Nombre = $this->SafeGetVal($json, 'nombre', $usuario->Nombre);
 			$usuario->IdFirebase = $this->SafeGetVal($json, 'idFirebase', $usuario->IdFirebase);
 			$usuario->Email = $this->SafeGetVal($json, 'email', $usuario->Email);
-			$usuario->Nrotelefono = $this->SafeGetVal($json, 'nrotelefono', $usuario->Nrotelefono);
+            $usuario->Password = $this->SafeGetVal($json, 'password', $usuario->Password);
+			$usuario->IdGoogle = $this->SafeGetVal($json, 'idGoogle', $usuario->IdGoogle);
 			$usuario->IdFacebook = $this->SafeGetVal($json, 'idFacebook', $usuario->IdFacebook);
 
 			$usuario->Validate();
@@ -314,6 +322,80 @@ class UsuarioController extends AppBaseController
         $correo->setAddress('luiyicpu@hotmail.com');
         $correo->sendEmail();
         echo 'enviado?';
+    }
+
+    public function Registrar(){
+        //Registrar nuevo usuario
+        $usuario = new Usuario($this->Phreezer);
+        $usuario->Nombre = $_POST['nombre'];
+        $usuario->Email = $_POST['email'];
+        $usuario->Password = $_POST['password'];
+        $usuario->IdFirebase = $_POST['id_firebase'];
+        $usuario->IdFacebook = $_POST['id_facebook'];
+        $usuario->IdGoogle = $_POST['id_google'];
+        $usuario->Validate();
+        $errors = $usuario->GetValidationErrors();
+        require_once 'Model/UsuarioCriteria.php';
+        //Verificar que el codigo facebook sea unico
+        $criteria = new UsuarioCriteria();
+        $criteria->IdFacebook_Equals = $usuario->IdFacebook;
+        $resultado = $this->Phreezer->Query('Usuario',$criteria)->ToObjectArray(true, $this->SimpleObjectParams());
+        if (count($resultado) == 1){
+            //El usuario ya existe
+            echo json_encode($resultado[0]);
+        }else{
+            //Registrar nuevo
+            if (count($errors) > 0)
+            {
+                echo 0;
+            }
+            else
+            {
+                $usuario->Save();
+                echo json_encode($usuario->ToObject($this->SimpleObjectParams()));
+            }
+        }
+    }
+
+    public function Autenticar(){
+        //Registrar nuevo usuario
+        $usuario = new Usuario($this->Phreezer);
+        $usuario->Nombre = $_POST['nombre'];
+        require_once 'Model/UsuarioCriteria.php';
+        $criteria = new UsuarioCriteria();
+        $criteria2 = new UsuarioCriteria();
+        $criteria = new UsuarioCriteria();
+        $criteria->Nombre_Equals = $usuario->Nombre;
+        if (isset($_POST['password'])){
+            $usuario->Password = $_POST['password'];
+            $criteria2->Password_Equals = $usuario->Password;
+        }
+        if (isset($_POST['id_facebook'])){
+            $usuario->IdFacebook = $_POST['id_facebook'];
+            $criteria2->IdFacebook_Equals = $usuario->IdFacebook;
+        }
+        if (isset($_POST['id_google'])){
+            $usuario->IdGoogle = $_POST['id_google'];
+            $criteria2->IdGoogle_Equals = $usuario->IdGoogle;
+        }
+        $usuario->Validate();
+        $errors = $usuario->GetValidationErrors();
+        $criteria->AddAnd($criteria2);
+        $resultado = $this->Phreezer->Query('Usuario',$criteria)->ToObjectArray(true, $this->SimpleObjectParams());
+        if (count($resultado) == 1){
+            //El usuario inserto bien sus datos
+            echo json_encode($resultado[0]);
+        }else{
+            //El usuario no existe
+            if (count($errors) > 0)
+            {
+                echo 666;
+            }
+            else
+            {
+                echo 0;
+            }
+        }
     }
 }
 
