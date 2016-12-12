@@ -14,8 +14,8 @@ $this->display('_Header.tpl.php');
     <div class="row">
         <div class="col-xs-6">
             <div class="form-group">
-                <label>Nombre</label>
-                <input class="form-control" type="text" name="nombre">
+                <label>Email</label>
+                <input class="form-control" type="text" name="email">
             </div>
         </div>
         <div class="col-xs-6">

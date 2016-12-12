@@ -360,12 +360,12 @@ class UsuarioController extends AppBaseController
     public function Autenticar(){
         //Registrar nuevo usuario
         $usuario = new Usuario($this->Phreezer);
-        $usuario->Nombre = $_POST['nombre'];
+        $usuario->Email = $_POST['email'];
         require_once 'Model/UsuarioCriteria.php';
         $criteria = new UsuarioCriteria();
         $criteria2 = new UsuarioCriteria();
         $criteria = new UsuarioCriteria();
-        $criteria->Nombre_Equals = $usuario->Nombre;
+        $criteria->Email_Equals = $usuario->Email;
         if (isset($_POST['password'])){
             $usuario->Password = $_POST['password'];
             $criteria2->Password_Equals = $usuario->Password;
